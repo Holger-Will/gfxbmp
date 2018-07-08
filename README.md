@@ -14,6 +14,10 @@ besides brightness contrast and cutoff, you can also choose from ten different d
 
 uses web-midi to allow you to controll contrast/brightness with real world buttons.
 
+# screenshot
+
+![screenshot of gfxbmp image editor](https://rawgit.com/Holger-Will/gfxbmp/master/screenshot.png)
+
 # warning
 
 it works quite well, but is still very rough around the edges. i consider it early beta stage. Code quality is pretty low currently, sorry ;-)
