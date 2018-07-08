@@ -1,7 +1,7 @@
 # gfxbmp
 Image Editor/Converter for the Adafruit GFX Library
 
-try it out here: https://github.com/Holger-Will/gfxbmp/blob/master/editor.html
+try it out here: https://rawgit.com/Holger-Will/gfxbmp/master/editor.html
 
 # features
 
