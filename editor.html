@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="code.js"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div id="main_menu" class="menu">
+          <span>dimensions</span>
+          <input type="text" id="dest_width" value="64" onchange="initNewScreen()"/>
+          <input type="text" id="dest_height" value="64" onchange="initNewScreen()"/>
+          <span>x</span>
+          <select id="fit_to_canvas_x" oninput="reload_image()">
+            <option value="1">min</option>
+            <option value="0" selected="selected">mid</option>
+            <option value="2">max</option>
+          </select>
+          <span>y</span>
+          <select id="fit_to_canvas_y" oninput="reload_image()">
+            <option value="1">min</option>
+            <option value="0" selected="selected">mid</option>
+            <option value="2">max</option>
+          </select>
+          <span>meet</span>
+          <select id="fit_to_canvas_ms" oninput="reload_image()">
+            <option value="0" selected="selected">meet</option>
+            <option value="1">slice</option>
+          </select>
+          <span>shades</span>
+          <input type="text" id="shades" value="255" oninput="convertToGreyscale()"/>
+          <span>shade calc</span>
+          <select id="luminance" oninput="convertToGreyscale()">
+            <option value="0">rgb3</option>
+            <option value="1">heuristics1</option>
+            <option value="2" selected="selected">luminance</option>
+            <option value="3">red</option>
+            <option value="4">green</option>
+            <option value="5">blue</option>
+          </select>
+          <span>Background</span>
+          <select id="background" oninput="reload_image()">
+            <option value="-1">none</option>
+            <option value="0">black</option>
+            <option value="1" selected="selected">white</option>
+          </select>
+          <span>inverted</span>
+          <input type="checkbox" id="inverted" onclick="convertToGreyscale()"/>
+        </div>
+        <div id="image_edit_menu" class="menu">
+          <span>contrast</span>
+          <input type="range" min="-255" max="255" value="0" id="contrast" oninput="convertToGreyscale()"/>
+          <span>brightness</span>
+          <input type="range" min="-255" max="255" value="0" id="light" oninput="convertToGreyscale()"/>
+          <span>cut-off</span>
+          <input type="range" min="0" max="255" value="128" id="cutoff" oninput="convertToGreyscale()"/>
+          <span>dithering</span>
+          <select id="dithering" oninput="convertToGreyscale()">
+            <option value="0">none</option>
+            <option value="1">linear</option>
+            <option value="2">fake_floyd_steinberg</option>
+            <option value="3" selected="selected">floyd_steinberg</option>
+            <option value="4" default>jarvis_judice_ninke</option>
+            <option value="5" default>stucki</option>
+            <option value="6" default>atkinson</option>
+            <option value="7" default>sierra</option>
+            <option value="8" default>sierra 2-row</option>
+            <option value="9" default>sierra light</option>
+          </select>
+        </div>
+      </header>
+      <div id="content">
+        <div id="preview">
+          <canvas width="64px" height="64px" id="original"></canvas>
+          <canvas width="64px" height="64px" id="grey_canvas"></canvas>
+          <canvas width="64px" height="64px" id="bw_canvas"></canvas>
+          <span class="arrow"></span>
+          <canvas width="64px" height="64px" id="res_canvas"></canvas>
+        </div>
+        <div id="editor"></div>
+        <textarea id="output"></textarea/><button onclick="toClipboard()">copy to clipboard</button>
+      </div>
+      <div id="imagestore_panel">
+        <button id="imagestore_add_button" class="button" onclick="filepicker.click()">Add Image</button>
+        <input id="filepicker" type="file" onchange="loadImage()"></input>
+        <div id="imagestore_list">
+        </div>
+      </div>
+      <div id="logo">
+        <svg width="100px" height="100px" viewBox="0 0 100 100">
+             <circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="10"/>
+             <text x="50" y="80" font-size="80" text-anchor="middle" fill="white">✏</text>
+        </svg>
+      </div>
+      <div id="toolbar2">
+        <span>
+          midi devices
+        </span>
+        <select id="available_midi_inputs">
+
+        </select>
+        <span>channel mappimg</span>
+        <span>contrast</span>
+        <select id="contrast_midi_ch">
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+        <br/>
+        <span>brighness</span>
+        <select id="brightness_midi_ch">
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+      </div>
+    </main>
+  </body>
+</html>
